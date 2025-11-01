@@ -26,7 +26,7 @@ const postVolunteer = async (req, res) => {
         }
 
         res.status(200).json({
-            message: 'You\'ve subscribed successfully',
+            message: 'Volunteer request has been sent successfully',
             data: newVolunteer
         })
     } catch (error) {
