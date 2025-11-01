@@ -12,6 +12,14 @@ const fetchWelfare = require('./routes/welfare/fetchWelfare');
 const postContact = require('./routes/contact/postContact');
 const fetchContactType = require('./routes/contact/fetchContactType');
 
+const postEvent = require('./routes/event/postEvent');
+const fetchEvent = require('./routes/event/fetchEvent');
+const editEvent = require('./routes/event/editEvent');
+const deleteEvent = require('./routes/event/deleteEvent');
+const logAdmin = require('./routes/admin/logAdmin');
+const authToken = require('./middleware/authToken');
+
+
 
 
 const app = express();
@@ -19,6 +27,8 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 app.use(morgan('dev'));
+
+app.post('/log_admin', logAdmin)
 
 app.post('/create_volunteer', postVolunteer)
 app.get('/fetch_volunteer', fetchVolunteer)
@@ -28,5 +38,10 @@ app.get('/fetch_request/:reqType', fetchContactType)
 
 app.post('/create_welfare', postWelfare)
 app.get('/fetch_welfare', fetchWelfare)
+
+app.post('/post_event', authToken, postEvent)
+app.get('/fetch_event', authToken, fetchEvent)
+app.put('/edit_event/:id', authToken, editEvent)
+app.delete('/delete_event/:id', authToken, deleteEvent)
 
 connection({ app, port: process.env.PORT || 8000 });
