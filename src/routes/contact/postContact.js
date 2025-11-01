@@ -1,22 +1,5 @@
-require('dotenv').config();
 const Contact = require('../../model/contact');
-const bodyParser = require('body-parser');
-const nodemailer = require('nodemailer');
-const express = require('express');
 const { getSocket } = require('../../config/connection');
-
-const app = express();
-
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
-
-let transporter = nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
-        user: process.env.EMAIL_RECIEVER,
-        pass: process.env.EMAIL_PWD
-    }
-})
 
 const postContact = async (req, res) => {
     const { firstName, lastName, email, phone, message, reqType } = req.body;
@@ -29,22 +12,6 @@ const postContact = async (req, res) => {
     try {
         const newContact = await Contact.create({
             firstName, lastName, email, phone, message, reqType
-        })
-
-        const senderEmail = newContact.email;
-
-        const mailOptions = {
-            from: process.env.EMAIL_RECIEVER,
-            to: senderEmail,
-            subject: `${newContact.reqType} - House of Peace Parish`,
-            text: `Thank you ${newContact.firstName} for reaching out to House of Peace Parish.\n\nOur team will get back to you shortly.\n\nBest regards,\nHouse of Peace Parish`
-        };
-
-        transporter.sendMail(mailOptions, (error, info) => {
-            if (error) {
-                console.error('Error occurred while sending email:', error);
-                return res.status(500).json({ message: 'Account created, but email could not be sent.' });
-            }
         })
 
         const io = getSocket();

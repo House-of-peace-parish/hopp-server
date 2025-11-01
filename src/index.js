@@ -3,8 +3,8 @@ const cors = require('cors');
 const { connection } = require('./config/connection');
 const morgan = require('morgan');
 
-const postSubscriber = require('./routes/subscriber/postSubscriber');
-const fetchSubscribers = require('./routes/subscriber/fetchSubscribers');
+const postVolunteer = require('./routes/volunteer/postVolunteer');
+const fetchVolunteer = require('./routes/volunteer/fetchVolunteer');
 
 const postWelfare = require('./routes/welfare/postWelfare');
 const fetchWelfare = require('./routes/welfare/fetchWelfare');
@@ -20,8 +20,8 @@ app.use(cors());
 app.use(express.json());
 app.use(morgan('dev'));
 
-app.post('/create_subscriber', postSubscriber)
-app.get('/fetch_subscriber', fetchSubscribers)
+app.post('/create_volunteer', postVolunteer)
+app.get('/fetch_volunteer', fetchVolunteer)
 
 app.post('/create_request', postContact)
 app.get('/fetch_request/:reqType', fetchContactType)
