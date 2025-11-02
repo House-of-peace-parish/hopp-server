@@ -12,7 +12,7 @@ const postVolunteer = async (req, res) => {
     try {
         // Find if volunteer exists
         const volunteerExist = await Volunteer.findOne({ email });
-        if(volunteerExist) {
+        if (volunteerExist) {
             return res.status(400).json({ message: 'volunteer with this email already exists' });
         }
 
@@ -21,7 +21,9 @@ const postVolunteer = async (req, res) => {
         })
 
         const io = getSocket();
-        if(io) {
+        if (io) {
+            console.log("✅ Socket instance exists, emitting to room 'hopp'...");
+            console.log("Emitting volunteer:", newVolunteer);
             io.to('hopp').emit('new_volunteer', newVolunteer)
         }
 

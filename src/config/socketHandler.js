@@ -5,6 +5,7 @@ module.exports = (io) => {
         socket.on('join_room', (room) => {
             socket.join(room);
             
+            console.log(`${socket.id} joined room: ${room}`);
             io.to(room).emit('user_joined', socket.id);
         })
 
