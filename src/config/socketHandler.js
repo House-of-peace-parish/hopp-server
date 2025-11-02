@@ -6,7 +6,7 @@ module.exports = (io) => {
             socket.join(room);
             
             console.log(`${socket.id} joined room: ${room}`);
-            io.to(room).emit('user_joined', socket.id);
+            io.to(room).emit('user_joined', { id: socket.id, room });
         })
 
         socket.on('leave_room', (room) => {
