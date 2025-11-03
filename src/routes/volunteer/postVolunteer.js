@@ -22,8 +22,6 @@ const postVolunteer = async (req, res) => {
 
         const io = getSocket();
         if (io) {
-            console.log("✅ Socket instance exists, emitting to room 'hopp'...");
-            console.log("Emitting volunteer:", newVolunteer);
             io.to('hopp').emit('new_volunteer', newVolunteer)
         }
 
