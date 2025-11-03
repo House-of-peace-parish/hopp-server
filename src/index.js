@@ -39,9 +39,9 @@ app.get('/fetch_request/:reqType', fetchContactType)
 app.post('/create_welfare', postWelfare)
 app.get('/fetch_welfare', fetchWelfare)
 
-app.post('/post_event', authToken, upload.single('image'), postEvent)
-app.get('/fetch_event', authToken, fetchEvent)
-app.put('/edit_event/:id', authToken, editEvent)
-app.delete('/delete_event/:id', authToken, deleteEvent)
+app.post('/post_event', upload.single('image'), postEvent)
+app.get('/fetch_event', fetchEvent)
+app.put('/edit_event/:id', editEvent)
+app.delete('/delete_event/:id', deleteEvent)
 
 connection({ app, port: process.env.PORT || 8000 });

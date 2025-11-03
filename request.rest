@@ -1,0 +1,11 @@
+post http://localhost:5000/post_event
+Content-Type: multipart/form-data
+
+{
+    "title": "HTML Introduction",
+    "date": "6701573b00e916a43d064d8a",
+    "time": "66cd6de60d14292ee213613e",
+    "location": "Oct 18, 2024",
+    "description": "Oct 18, 2024 18:59:59",
+    "image": "https://meet.google.com/cqk-vrgq-tgw",
+}
