@@ -17,7 +17,7 @@ const serviceAccount = {
 
 const app = initializeApp({
   credential: cert(serviceAccount),
-  storageBucket: 'hopp-b07e0.appspot.com', // Replace with your actual bucket name
+  storageBucket: `${process.env.FIREBASE_PROJECT_ID}.appspot.com`,
 });
 
 // Export the storage instance
