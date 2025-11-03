@@ -19,7 +19,7 @@ const postEvent = async (req, res) => {
     const { title, date, time, location, description } = req.body;
     const image = req.file;
 
-    if (!title || !date || time || !location || !description || !image) {
+    if (!title || !date || !time || !location || !description || !image) {
         res.status(404).json({
             message: 'All fields are required'
         })
@@ -63,6 +63,7 @@ const postEvent = async (req, res) => {
 
         stream.end(image.buffer);
     } catch (error) {
+        console.error('🔥 Error creating event:', error);
         res.status(500).json({ error: error.message });
     }
 }
