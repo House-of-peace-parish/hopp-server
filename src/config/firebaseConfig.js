@@ -17,9 +17,10 @@ const serviceAccount = {
 
 const app = initializeApp({
   credential: cert(serviceAccount),
-  storageBucket: `${process.env.FIREBASE_PROJECT_ID}.appspot.com`,
+  storageBucket: `hopp-b07e0.appspot.com`,
 });
 
 // Export the storage instance
 const storage = getStorage(app);
+console.log("✅ Firebase bucket:", storage.bucket().name);
 module.exports = { storage };

@@ -12,14 +12,11 @@ const fetchWelfare = require('./routes/welfare/fetchWelfare');
 const postContact = require('./routes/contact/postContact');
 const fetchContactType = require('./routes/contact/fetchContactType');
 
-const { postEvent, upload } = require('./routes/event/postEvent');
+const postEvent = require('./routes/event/postEvent');
 const fetchEvent = require('./routes/event/fetchEvent');
 const editEvent = require('./routes/event/editEvent');
 const deleteEvent = require('./routes/event/deleteEvent');
 const logAdmin = require('./routes/admin/logAdmin');
-const authToken = require('./middleware/authToken');
-
-
 
 
 const app = express();
@@ -39,7 +36,7 @@ app.get('/fetch_request/:reqType', fetchContactType)
 app.post('/create_welfare', postWelfare)
 app.get('/fetch_welfare', fetchWelfare)
 
-app.post('/post_event', upload.single('image'), postEvent)
+app.post('/post_event', postEvent)
 app.get('/fetch_event', fetchEvent)
 app.put('/edit_event/:id', editEvent)
 app.delete('/delete_event/:id', deleteEvent)
