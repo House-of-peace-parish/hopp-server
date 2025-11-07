@@ -17,6 +17,9 @@ const fetchEvent = require('./routes/event/fetchEvent');
 const editEvent = require('./routes/event/editEvent');
 const deleteEvent = require('./routes/event/deleteEvent');
 const logAdmin = require('./routes/admin/logAdmin');
+const contactRead = require('./routes/contact/contactRead');
+const welfareRead = require('./routes/welfare/welfareRead');
+const volunteerRead = require('./routes/volunteer/volunteerRead');
 
 
 const app = express();
@@ -29,12 +32,15 @@ app.post('/log_admin', logAdmin)
 
 app.post('/create_volunteer', postVolunteer)
 app.get('/fetch_volunteer', fetchVolunteer)
+app.put('/read_volunteer/:id', volunteerRead)
 
 app.post('/create_request', postContact)
 app.get('/fetch_request/:reqType', fetchContactType)
+app.put('/read_request/:id', contactRead)
 
 app.post('/create_welfare', postWelfare)
 app.get('/fetch_welfare', fetchWelfare)
+app.put('/read_welfare/:id', welfareRead)
 
 app.post('/post_event', postEvent)
 app.get('/fetch_event', fetchEvent)
