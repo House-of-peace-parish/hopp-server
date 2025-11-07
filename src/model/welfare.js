@@ -24,6 +24,10 @@ const welfareSchema = new mongoose.Schema({
     pickUp: {
         type: String,
         required: true
+    },
+    read: {
+        type: boolean,
+        default: false
     }
 }, { timestamps: true })
 
