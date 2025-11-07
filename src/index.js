@@ -35,7 +35,7 @@ app.get('/fetch_volunteer', fetchVolunteer)
 app.put('/read_volunteer/:id', volunteerRead)
 
 app.post('/create_request', postContact)
-app.get('/fetch_request/:reqType', fetchContactType)
+app.get('/fetch_request', fetchContactType)
 app.put('/read_request/:id', contactRead)
 
 app.post('/create_welfare', postWelfare)
