@@ -26,7 +26,7 @@ const contactSchema = new mongoose.Schema({
         enum: ['Contact', 'Prayer']
     },
     read: {
-        type: boolean,
+        type: Boolean,
         default: true
     }
 }, { timestamps: true })

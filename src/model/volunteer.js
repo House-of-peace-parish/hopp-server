@@ -22,7 +22,7 @@ const volunteerSchema = new mongoose.Schema({
         required: true
     },
     read: {
-        type: boolean,
+        type: Boolean,
         default: false
     }
 }, { timestamps: true })
