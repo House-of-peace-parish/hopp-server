@@ -3,7 +3,7 @@ const { getSocket } = require('../../config/connection');
 
 
 const volunteerRead = async (req, res) => {
-    const { volId } = req.params;
+    const { volunteerId } = req.params;
     const { read } = req.body;
 
     if (read === undefined) {
@@ -14,7 +14,7 @@ const volunteerRead = async (req, res) => {
 
     try {
         const readUpdate = await Volunteer.findByIdAndUpdate(
-            volId,
+            volunteerId,
             { read },
             {
                 new: true,

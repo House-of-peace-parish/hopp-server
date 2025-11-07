@@ -3,7 +3,7 @@ const { getSocket } = require('../../config/connection');
 
 
 const contactRead = async (req, res) => {
-    const { contId } = req.params;
+    const { contactId } = req.params;
     const { read } = req.body;
 
     if (read === undefined) {
@@ -14,7 +14,7 @@ const contactRead = async (req, res) => {
 
     try {
         const readUpdate = await Contact.findByIdAndUpdate(
-            contId,
+            contactId,
             { read },
             {
                 new: true,
