@@ -2,7 +2,7 @@ const { getSocket } = require("../../config/connection");
 const Volunteer = require("../../model/volunteer");
 
 const postVolunteer = async (req, res) => {
-    const { firstName, lastName, email, phone, volunteer } = req.body;
+    const { firstName, lastName, email, phone, volunteer, read } = req.body;
     if (!firstName || !lastName || !email || !phone || !volunteer) {
         res.status(400).json({
             message: 'All fields are required'
@@ -17,7 +17,7 @@ const postVolunteer = async (req, res) => {
         }
 
         const newVolunteer = await Volunteer.create({
-            firstName, lastName, email, phone, volunteer
+            firstName, lastName, email, phone, volunteer, read
         })
 
         const io = getSocket();

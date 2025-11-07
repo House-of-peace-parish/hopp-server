@@ -2,7 +2,7 @@ const Contact = require('../../model/contact');
 const { getSocket } = require('../../config/connection');
 
 const postContact = async (req, res) => {
-    const { firstName, lastName, email, phone, message, reqType } = req.body;
+    const { firstName, lastName, email, phone, message, reqType, read } = req.body;
     if (!firstName || !lastName || !email || !phone || !message || !reqType) {
         res.status(400).json({
             message: 'All fields are required'
@@ -11,7 +11,7 @@ const postContact = async (req, res) => {
 
     try {
         const newContact = await Contact.create({
-            firstName, lastName, email, phone, message, reqType
+            firstName, lastName, email, phone, message, reqType, read
         })
 
         const io = getSocket();

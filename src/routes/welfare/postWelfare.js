@@ -2,7 +2,7 @@ const Welfare = require('../../model/welfare');
 const { getSocket } = require('../../config/connection');
 
 const postWelfare = async (req, res) => {
-    const { firstName, lastName, email, phone, date, pickUp } = req.body;
+    const { firstName, lastName, email, phone, date, pickUp, read } = req.body;
     if (!firstName || !lastName || !email || !phone || !date || !pickUp) {
         res.status(400).json({
             message: 'All fields are required'
@@ -11,7 +11,7 @@ const postWelfare = async (req, res) => {
 
     try {
         const newWelfare = await Welfare.create({
-            firstName, lastName, email, phone, date, pickUp
+            firstName, lastName, email, phone, date, pickUp, read
         })
 
         const io = getSocket();
