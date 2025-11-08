@@ -1,7 +1,6 @@
 const Contact = require('../../model/contact');
 
 const fetchContactType = async (req, res) => {
-
     try {
         const requests = await Contact.find().sort({ createdAt: -1 });
 
@@ -10,7 +9,7 @@ const fetchContactType = async (req, res) => {
         }
 
         return res.status(200).json({
-            message: `${reqType} requests fetched successfully`,
+            message: `Contact fetched successfully`,
             data: requests,
         });
     } catch (error) {
