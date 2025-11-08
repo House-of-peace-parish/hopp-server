@@ -13,7 +13,7 @@ const editEvent = async (req, res) => {
     try {
         const updateId = await Event.findByIdAndUpdate(id, { ...otherData }, { new: true, runValidators: true });
         if (!updateId) {
-            res.status(404).json({
+            return res.status(404).json({
                 message: 'Id doesn\'t couldn\'nt be found'
             })
         }
