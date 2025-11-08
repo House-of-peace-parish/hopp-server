@@ -32,15 +32,15 @@ app.post('/log_admin', logAdmin)
 
 app.post('/create_volunteer', postVolunteer)
 app.get('/fetch_volunteer', fetchVolunteer)
-app.put('/read_volunteer/:id', volunteerRead)
+app.put('/read_volunteer/:volunteerId', volunteerRead)
 
 app.post('/create_request', postContact)
 app.get('/fetch_request', fetchContactType)
-app.put('/read_request/:id', contactRead)
+app.put('/read_request/:contactId', contactRead)
 
 app.post('/create_welfare', postWelfare)
 app.get('/fetch_welfare', fetchWelfare)
-app.put('/read_welfare/:id', welfareRead)
+app.put('/read_welfare/:welfareId', welfareRead)
 
 app.post('/post_event', postEvent)
 app.get('/fetch_event', fetchEvent)
